@@ -1,4 +1,4 @@
-* make a new virtual environment
+* make a new virtual environment and add main.py & ./templates folder there
 ```
 $ python -m venv .venv
 ```
