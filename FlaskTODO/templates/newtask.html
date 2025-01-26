@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new task</title>
+</head>
+<body>
+    <form method="POST" action="{{ url_for("add_task") }}">
+        <input type="text" name="task_name" placeholder="task name">
+        <input type="submit" value="Add task">
+    </form>
+</body>
+</html>

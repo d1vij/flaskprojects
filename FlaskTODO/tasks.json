@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Some task",
+        "status": "completed"
+    },
+    {
+        "name": "Other task",
+        "status": "todo"
+    }
+]
