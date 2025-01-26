@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{#{% block stylesheet %}{{ url_for('static',filename="static/login.css") }}{% endblock %}#}
+{% block content %}
+    <div id="flashes">
+        {% with flashed_messages = get_flashed_messages() %}
+            {% for message in flashed_messages %}
+                <p><strong><em>{{ message }}</em></strong></p>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+    <div id="content">
+        <h1>Login</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        <div class="create-account">
+            <p>Don't have an account? <a href="{{ url_for('create_user') }}">Create one</a></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{{ super() }}{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ post.get("title") }}{% endblock %}
+
+{% block content %}
+    <div id="post-details">
+        <h1>{{ post.get("title","Unknown") }}</h1>
+        <p><strong>Author:</strong> {{ post.get("author", "Unknown") }}</p>
+        <p><strong>Date Created:</strong> {{ post.get("date_created", "N/A") }}</p>
+        <p><strong>Date Modified:</strong> {{ post.get("date_modified", "N/A") }}</p>
+        <div id="post-content">
+            <p>{{ post.get("content", "No content available.") }}</p>
+        </div>
+    </div>
+{% endblock %}

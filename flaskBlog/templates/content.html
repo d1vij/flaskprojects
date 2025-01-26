@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Content Page{% endblock %}
+
+{% block content %}
+    <div id="flashes">
+        {% with flashed_messages = get_flashed_messages() %}
+            <ul>
+            {% for message in flashed_messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endwith %}
+    </div>
+
+    <div id="content">
+        <h1>Welcome, {{ session.get("username") }}</h1>
+        <div class="credentials">
+            <p><em>Your Credentials</em></p>
+            <ul>
+                <li><strong>Username:</strong> {{ session.get("username") }}</li>
+                <li><strong>Password:</strong> {{ session.get("password") }}</li>
+            </ul>
+        </div>
+
+        <div class="posts">
+            <h2>Your Posts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Date Created</th>
+                        <th>Date Modified</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td>{{ post[2] }}</td>
+                            <td>{{ post[3] }}</td>
+                            <td>{{ post[4]|date_normalize }}</td>
+                            <td>{{ post[5]|date_normalize }}</td>
+                            <td class="actions">
+                                <a href="/post/delete/{{ post[0] }}" class="delete">Delete</a>
+                                <a href="/post/edit/{{ post[0] }}" class="edit">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="newpost">
+            <a href="{{ url_for('createpost') }}" class="btn">Create New Post</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{{ super() }}{% endblock %}
